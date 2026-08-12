@@ -7,9 +7,10 @@ without the owner approving it explicitly in the Cursor chat, with the date reco
 
 | Scope | Operation | Approved | Date |
 | --- | --- | --- | --- |
-| `usealtered/altered-generated-opus` | Full git write: branch, commit, push, PR, self-merge | Yes | 2026-08-12 |
+| `usealtered/altered-generated-opus` | Full git write: branch, commit, push, merge to `main` | Yes | 2026-08-12 |
 | Any third party | Read-only API calls and documentation fetches | Yes | 2026-08-12 |
 | Public package registries | Install dependencies | Yes | 2026-08-12 |
+| Handed-over credentials | One first wipe, where contents are clearly residual from the old `altered-generated` project. No porting, no migration. | Yes | 2026-08-12 |
 
 ## Explicitly denied until approved
 
@@ -22,6 +23,16 @@ without the owner approving it explicitly in the Cursor chat, with the date reco
 - Any outbound message, post, DM, or email to a real recipient.
 - Any payment or charge.
 - Cursor Cloud Agents API writes: spawning agents, creating runs.
+
+## The previous system may still be live
+
+`altered-generated` deployed a production API and site on Vercel with recurring QStash schedules for
+content generation and publishing, plus a live Sendblue number. Unless it has been torn down, those
+schedules are still firing into a running deployment and could still publish posts or send messages.
+
+Before this project goes live on any shared credential, confirm with the owner whether the old
+deployment and its schedules are shut down. Do not shut them down unilaterally; a running system
+that touches the public is his call, even though D034 permits wiping residual data.
 
 ## Resource inventory
 
