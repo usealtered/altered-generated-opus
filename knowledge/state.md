@@ -1,52 +1,73 @@
 # Current state
 
-Updated 2026-08-12. Read this first, then `decisions.md`, `open-questions.md`, `prior-art.md`.
+Updated 2026-08-12. Read this first, then `decisions.md`, `open-questions.md`, `feature-graph.md`,
+`prior-art.md`.
 
 ## Where the project stands
 
-The repository contains documentation only. No stack has been chosen, no code has been written, and
-no infrastructure exists. This is deliberate: under D005 nothing gets built while the decisions that
-would shape it are still open.
+Documentation and contracts only. No stack scaffolded, no code written, no infrastructure. The
+commercial strategy and the operating protocol are now settled; the money, channel, and surface
+decisions are not.
 
-Completed so far:
+Completed:
 
-- Audited both reference repositories and recorded the findings in `prior-art.md`.
-- Wrote the agent operating contract in `AGENTS.md`.
-- Recorded the owner's founding directives in `decisions.md` as round 0.
-- Recorded the guardrail and resource position in `constraints.md`.
-- Asked round 1 of the decision questions in the Cursor chat, mirrored in `open-questions.md`.
+- Audited both reference repositories. Findings in `prior-art.md`.
+- Wrote the operating contract in `AGENTS.md`, including the hard wall, the security pass, the
+  third-party doctrine, and the feature graph procedure.
+- Recorded round 0 founding directives and all fifteen round 1 answers in `decisions.md`
+  (D001 to D039).
+- Specified the feature graph in `feature-graph.md`.
+- Published the environment contract as `.env.example`.
+- Asked round 2 in the Cursor chat, mirrored in `open-questions.md`.
+
+## The shape of the business, settled
+
+Pre-sell ALTERED Koa Layer 1. A $100 deposit reserves a build slot and locks the price; $399 is due
+at launch, $499 total. Target launch 2026-11-05, when the six-month program begins and the first
+slice ships. Refunds are guaranteed but run through a process, and the window opens after launch.
+Buyers get Discord access immediately. The core product is hand-written by the owner; this repo
+generates everything around it. Revenue target is at least $3,000 this month.
 
 ## What is blocking
 
-- **Round 1 answers.** Nothing downstream can be built until the product, offer, boundary, and stack
-  questions are answered. Do not start scaffolding on assumptions.
-- **Credentials.** This project has no database, no LLM key, no messaging provider, no cache, no
-  queue, no payment provider, and no domain. See the resource inventory in `constraints.md`. The
-  only two secrets present belong to the parent project and are not for use here.
+- **Round 2 answers.** Payment provider, publishing route, and dashboard auth each add variables to
+  `.env.example`, so the credential handover is not complete until they are answered.
+- **Credentials.** Nothing live can be built or verified. Only `VERCEL_TOKEN` is usable, and only
+  for reads. The `SHARED_STORAGE_DATABASE_URL` in the environment belongs to the parent project, has
+  been rolled, and should be removed from this project's secrets.
 
-## Next action
+## What can proceed without answers
 
-If round 1 is unanswered: do not build. Re-ask or wait.
+Repository scaffolding and the feature graph implementation, once the owner has had a chance to
+object to the structural choices below. Both are independent of every open question.
 
-If round 1 is answered: record the answers in `decisions.md`, then move to round 2 as listed in
-`open-questions.md`.
+## Structural choices taken under D031
+
+Q13 gave the agent full authority over structure and composition. These are stated plainly so the
+owner can veto any of them:
+
+- **pnpm workspaces with Turborepo.** One deployable application, feature packages beside it.
+- **A single Next.js 16 application** serving the landing page, the admin dashboard, and the API
+  routes including webhooks. One deployment, one set of environment variables, far less operational
+  surface than splitting an API out. Revisit only if a genuine long-running workload appears.
+- **Effect v4 as the backbone**, per D032, with AI SDK v7, Drizzle, and the auth library wrapped at
+  the edges.
+- **Neon Postgres with Drizzle**, Upstash Redis for chat state and locks, Upstash QStash for
+  scheduling.
 
 ## Useful facts verified this session
 
-Package landscape as of 2026-08-12, checked against the registry rather than recalled:
+Registry versions as of 2026-08-12: `effect` rc 4.0.0-rc.108 (stable line is 3.22.1), `ai` 7.0.63,
+`next` 16.3.0, `drizzle-orm` rc 1.0.0-rc.4 (stable line 0.45.2), `hono` 4.13.1, `better-auth`
+1.6.27, `arktype` 2.2.3, `zod` 4.4.3.
 
-- `effect` - stable 3.22.1, `beta` 4.0.0-beta.107, `rc` 4.0.0-rc.108. Version 4 has reached release
-  candidate.
-- `ai` (AI SDK) - stable 7.0.63.
-- `next` - stable 16.3.0.
-- `drizzle-orm` - stable 0.45.2, `rc` 1.0.0-rc.4. Several Effect-integration dist-tags exist.
-- `hono` 4.13.1, `better-auth` 1.6.27, `arktype` 2.2.3, `zod` 4.4.3.
+Image toolchain: Node 22.14.0, pnpm 10.33.3, git 2.43.0.
 
-Toolchain on the cloud agent image: Node 22.14.0, pnpm 10.33.3, git 2.43.0. The parent repo targets
-Node 24 and pnpm 11.8.0, so a version manager or an environment build will be needed if this repo
-matches it.
+The complete GTM master chat from the parent repo is committed at
+`.context/strategy-generated/sources/gtm-master-chat.jsonl` in `usealtered/altered`. It is 316K of
+JSONL and is the richest available record of how the offer was reasoned out. Under D012 nothing in
+it is treated as true without re-confirmation, but it is the best source for the owner's voice and
+for the reasoning behind retired options.
 
-To study Effect v4, clone the source rather than relying on documentation:
-`git clone --depth 1 https://github.com/Effect-TS/effect-smol` and read
-`https://raw.githubusercontent.com/Effect-TS/effect-smol/refs/heads/main/MIGRATION.md`. Clone outside
-the repository tree.
+The Apple Notes repository is not reachable. `gh` sees only four repos under `usealtered` and
+eighteen under `inducingchaos`, none of which is a notes export. It is presumably private.
