@@ -381,3 +381,101 @@ in the previous repo were exactly this failure.
 **Verdict:** At least $3,000 in the current month. Cleanliness and stability are the stated route to
 it, not a trade against it.
 
+---
+
+## Round 2 - money, channels, and surfaces (2026-08-14)
+
+### D040 - Q16: the launch promise is the mechanism core
+
+**Verdict:** On the launch date we ship memory, self-scheduled reach-outs, voice notes, and notes
+import. Nothing beyond that is promised.
+
+**Why:** it is exactly the mechanism the pitch names, so the promise and the marketing are one
+sentence, and it is what one person can hand-write in the window. Anything wider risks the date, and
+the date is the one thing that cannot slip quietly.
+
+### D041 - Q17: Autumn for payments
+
+**Verdict:** Autumn, over direct Stripe. Open source, and it carries usage-based billing all the way
+rather than leaving us to assemble it from Stripe webhooks, which matters because the program is
+built around an AI usage allowance.
+
+**Note:** this supersedes the agent's Stripe recommendation. Autumn settles onto Stripe underneath,
+so payout speed is retained.
+
+### D042 - Q18: the landing page informs, iMessage closes
+
+**Verdict:** The landing page creates interest and states the offer. The call to action moves the
+prospect into the iMessage thread, where the sales agent handles objections and closes, the way a
+high-ticket call would.
+
+**Why the conversation is mandatory rather than optional:** opting into the thread is what gives us
+the highest-converting follow-up channel for lukewarm buyers. Losing the small share of impatient
+self-serve buyers is worth that.
+
+**Call to action wording:** something with status and positioning, along the lines of "Start
+application", rather than naming Koa when it is not yet Koa answering. Exact copy is a later round.
+
+**Corollary:** if the price scares someone away, that is a landing page problem, not a price
+problem.
+
+### D043 - Q19: outreach and content run in parallel
+
+**Verdict:** Both, built end to end without compromising either. Outreach produces cash and the raw
+language of real objections; content compounds and reaches the demographic through the algorithm in
+a way manual prospecting cannot. Paid amplification comes later, only against posts that already
+proved themselves.
+
+### D044 - Q20: Zernio, rebuilt cleanly
+
+**Verdict:** Publish through Zernio, reimplemented properly rather than carried over. The days spent
+building it back correctly outweigh the hours per day of manual posting.
+
+### D045 - Q21: the sales agent closes, with hard escalation
+
+**Verdict:** Autonomous, escalating to the owner only on high-risk or unclear topics: product claims
+beyond the locked promise list, the launch date, and refunds.
+
+### D046 - Q22: email codes for the dashboard
+
+**Verdict:** Better Auth with an emailed code, delivered by Resend. Chosen for durability and
+simplicity over passkeys, which have been unreliable in practice. This covers the admin dashboard
+only; the user-facing product may choose differently later.
+
+### D047 - The generated system is the testimonial
+
+**Verdict:** We are our own biggest proof, and we say so openly. Every landing page, document,
+social post, and advertisement is generated, and that is disclosed rather than hidden.
+
+**The claim underneath it:** the owner clarified his product's purpose and scope to his own
+satisfaction, held that clarity in Koa, and directed AI to generate everything to his standard while
+keeping complete mental oversight of the project without reading the code. The feature graph is what
+makes that last part true rather than a boast.
+
+**Constraint:** the claim only ships once it is real. It becomes true the moment this campaign is
+live and working.
+
+### D048 - Content is text now, generated video later
+
+**Verdict:** Text posts to start, optionally with a simple image or card for attention and for use
+in advertisements. A personal-brand video pipeline using current generation models, with the owner
+approving and publishing, is a later upgrade rather than a launch dependency.
+
+### D049 - The feature graph may become an offer component, but not yet
+
+**Verdict:** A read-only feature graph that Koa can manipulate, keeping a founder's codebase and
+their understanding of it in sync, is a plausible extension of the offer. It is not promised, not
+mentioned in copy, and not scoped, until we have built it and used it ourselves successfully.
+
+### D050 - Deployment topology
+
+**Verdict:** One Next.js application on Vercel serving the site, the dashboard, and the API under
+`/api`. The inbound iMessage webhook therefore lives at `/api/webhooks/sendblue` on the same origin,
+so no separate API base URL is needed.
+
+### D051 - Local development environment
+
+**Verdict:** Vercel is the source of truth for environment values. Pull them locally and then set
+`APP_ENV` to `development` by hand, because a pulled production file will otherwise claim to be
+production. Recorded in `.env.example`.
+

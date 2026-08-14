@@ -24,33 +24,34 @@ without the owner approving it explicitly in the Cursor chat, with the date reco
 - Any payment or charge.
 - Cursor Cloud Agents API writes: spawning agents, creating runs.
 
-## The previous system may still be live
+## The previous system
 
-`altered-generated` deployed a production API and site on Vercel with recurring QStash schedules for
-content generation and publishing, plus a live Sendblue number. Unless it has been torn down, those
-schedules are still firing into a running deployment and could still publish posts or send messages.
+Resolved 2026-08-14. The owner has taken down the previous project's deployments and provisioned new
+infrastructure, so its schedules are no longer firing.
 
-Before this project goes live on any shared credential, confirm with the owner whether the old
-deployment and its schedules are shut down. Do not shut them down unilaterally; a running system
-that touches the public is his call, even though D034 permits wiping residual data.
+## Reference clones
+
+Located 2026-08-14 with the broader GitHub token. Both are private and read-only.
+
+- `usealtered/altered-no-code-1-week-gtm` - the notes repository. Roughly 2,000 Apple Notes exports
+  under `sources/notes/`, plus Cursor chat and plan exports. This is where the **Liminal** thinking
+  lives, along with the foundational reasoning behind ALTERED's primitives.
+- `inducingchaos/liminal` - a small prior implementation of Liminal.
 
 ## Resource inventory
 
-What this project actually has access to right now. Verified 2026-08-12.
+What this project actually has access to right now. Verified 2026-08-14.
 
 | Resource | Status | Notes |
 | --- | --- | --- |
-| `SHARED_STORAGE_DATABASE_URL` | Present, credentials rejected | Belongs to the `altered` experimental tier, not this project. Password was rolled after a past leak incident. Not needed here. |
-| `VERCEL_TOKEN` | Present | Read-only by policy. |
-| Database for this project | **Missing** | |
-| LLM provider key | **Missing** | |
-| iMessage provider (Sendblue or equivalent) | **Missing** | |
-| Redis / KV | **Missing** | |
-| Queue / scheduler | **Missing** | |
-| Payment provider | **Missing** | |
-| Social publishing API | **Missing** | |
-| Analytics | **Missing** | |
-| Domain for this project | **Missing** | |
+| `READ_ONLY__GITHUB_TOKEN` | Present | Full read across the owner's repos. Read-only by policy and by name. |
+| `READ_ONLY__VERCEL_TOKEN` | Present | Read-only by policy and by name. |
+| `READ_ONLY__CURSOR_TOKEN` | Present | Read-only by policy and by name. |
+| Everything in `.env.example` | **Provisioned by the owner, not yet reachable here** | Values live in the Vercel project. They reach this environment only once the owner adds them as Cloud Agent secrets, or once an agent is permitted to pull them. |
+
+The owner has provisioned a new database, Redis, queue, and LLM key, and has taken down the previous
+project's deployments. The iMessage number is carried over with a rolled signing secret and its
+webhook repointed at this application.
 
 Nothing that runs against a live service can be built or verified until the relevant credential is
 provisioned by the owner. Pure logic, schema, and interface work can proceed without them, and

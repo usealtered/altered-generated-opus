@@ -7,51 +7,38 @@ Answered questions move to `decisions.md` and are removed from the active list h
 
 ---
 
-## Round 1 - foundation
+## Rounds 1 and 2
 
-**Answered 2026-08-12.** All fifteen questions resolved. See `decisions.md`, entries D015 to D039.
+**Answered.** Round 1 on 2026-08-12 (D015 to D039), round 2 on 2026-08-14 (D040 to D051).
 
 ---
 
-## Round 2 - offer stack, money, and channels (asked 2026-08-12, awaiting answers)
-
-Ordered so that no answer can invalidate an earlier one: what we promise, then how we take money,
-then where traffic comes from, then who closes it, then how the owner sees it.
+## Round 3 - narrative, surfaces, and measurement (asked 2026-08-14)
 
 | # | Question | Recommendation | Status |
 | --- | --- | --- | --- |
-| Q16 | Exactly what is promised for the launch date | The mechanism core only: memory, self-scheduled reach-outs, voice notes, notes import. Nothing that risks the date. | asked |
-| Q17 | Payment provider | Stripe directly, for payout speed | asked |
-| Q18 | Where the deposit is taken | Price stated openly on the page, iMessage as the primary close, a direct checkout link as the secondary path | asked |
-| Q19 | First traffic source and sequencing | Assisted outreach now for cash, content engine built in parallel as the durable channel, paid only on proven posts | asked |
-| Q20 | Social publishing route | Reuse the existing posting API if the account is still good, otherwise draft-only until it is worth wiring | asked |
-| Q21 | Sales agent autonomy | Autonomous, with hard escalation on product claims, dates, and refunds | asked |
-| Q22 | Dashboard authentication | Passkey as primary, an iMessage one-time code as the new-device fallback | asked |
-
-Answers to Q17, Q20, and Q22 complete the pending section of `.env.example`.
+| Q23 | Whether the "generated systems" angle becomes the content narrative | Yes as narrative, no as offer. Test at the shallowest layer before touching a locked one. | asked |
+| Q24 | Which account publishes | The company account now, personal brand once there is proof to carry it | asked |
+| Q25 | Content approval model | Batch approve in iMessage, with the dashboard as the fuller view | asked |
+| Q26 | Domain and URL structure | A subdomain of `altered.computer` for this system, keeping the apex for the real product | asked |
+| Q27 | Dashboard v1 scope | Lead flow, drafts and scheduled posts, the feature graph, and the kill switches. Nothing else. | asked |
+| Q28 | iMessage operator v1 scope | Notifications, status answers, and approvals. Delegation to coding agents comes second. | asked |
+| Q29 | Analytics and what we count | Our own events in Postgres first, one hosted product analytics tool second | asked |
 
 ---
 
 ## Planned later rounds
 
-- **Round 3 - systems and surfaces.** Content engine depth and approval model, analytics and
-  attribution, ads promotion criteria, dashboard scope, iMessage operator agent design and its link
-  to the coding agents, scheduling model, Discord setup.
-- **Round 4 - data and delivery.** Data model for leads and content, environment strategy, testing
-  and CI, deployment topology, observability stack.
+- **Round 4 - data and delivery.** Lead and content data model, sales stage machine, scheduling
+  model, testing strategy, environment and secret flow into agent sessions.
 - **Round 5 - copy and visual design.** Headline and offer copy, the Layer 1 explainer, landing page
-  structure, visual system, Koa's voice and tone.
+  structure, the visual system, Koa's voice, and the proof assets.
 
 ---
 
 ## Waiting on the owner
 
-- **Credentials.** The template is published in chat and committed as `.env.example`. Nothing that
-  touches a live service can be built or verified until values exist.
-- **Cursor API key and a broader GitHub token.** Needed to read prior cloud chats and to find the
-  Apple Notes repository.
-- **The Apple Notes repository name.** Not visible to the current token and not present under
-  `usealtered` or `inducingchaos`. It holds the Liminal notes that inform the feature graph, and the
-  foundational thinking on ALTERED's primitives. Likely private.
-- **Whether the previous system is still live.** See the warning in `constraints.md`.
+- **Environment values reaching this environment.** They exist in Vercel. Until they are added as
+  Cloud Agent secrets or an agent is approved to pull them, nothing live can be verified here.
 - **Final confirmation of the 2026-11-05 launch date**, once sales are consistent.
+- **Resend credentials**, offered but not yet provided.
