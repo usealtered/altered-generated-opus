@@ -48,12 +48,26 @@ The inbound iMessage webhook is `https://<domain>/api/webhooks/sendblue`. Readin
 `/api/health`, which outside production names every missing environment variable and in production
 reports only a count.
 
+## Reference material now mined
+
+The notes archive and the `liminal` repo have been read. Findings landed in two places: the concepts
+worth adopting are in `feature-graph.md` under "Adopted from Liminal", and ALTERED's data primitives
+are drafted in `product-primitives.md` as unconfirmed reference for the copy and sales rounds. The
+`liminal` repo itself is an empty scaffold and needs no further attention.
+
 ## Open strategic thread
 
 The owner is considering a broader angle: helping detail-obsessed founders achieve intentional app
 generation, with the feature graph providing stateful consistency. It is a genuine opportunity and
 also a genuine risk to the launch date. The agent's recommendation, pending his answer, is to run it
 as the content narrative while the offer stays exactly as locked. See Q23 in `open-questions.md`.
+
+The notes strengthen both sides of that. He has circled this angle for months and once considered it
+his first high-ticket offer, describing the buyer as a solo founder whose app is too complex and who
+is too perfectionist to finish, which is almost exactly the locked demographic. He has also deferred
+building it every time, most recently in July, on the grounds that development time is the binding
+constraint and memory matters more. Both facts point the same way: run it as narrative now, keep the
+delivery promise where it is.
 
 ## Useful facts verified this session
 
