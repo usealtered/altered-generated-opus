@@ -1,7 +1,7 @@
 # Current state
 
 Updated 2026-08-15. Read this first, then `decisions.md`, `open-questions.md`, `feature-graph.md`,
-`prior-art.md`, `constraints.md`, `product-primitives.md`.
+`prior-art.md`, `constraints.md`, `product-primitives.md`, `design-reference.md`.
 
 ## Where the project stands
 
@@ -31,7 +31,9 @@ generated and disclosed.
 
 ## What is blocking
 
-- **Round 4 answers.** See `open-questions.md`, which carries the full text of each question.
+- **Round 4 answers.** See `open-questions.md`, which carries the full text of each question. Q30 to
+  Q36 are offer and go-to-market; Q37 to Q40 are design, and three of those correct assumptions an
+  agent made rather than preferences he stated.
 - **Credentials not yet provisioned:** Resend, Autumn, Zernio.
 - **Copy approval** before the landing page can be indexed.
 

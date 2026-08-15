@@ -18,6 +18,10 @@ move to `decisions.md` and are removed from here.
 
 ## Round 4 - finishing the offer, then volume (asked 2026-08-15)
 
+Q30 to Q36 cover the offer and go-to-market. Q37 to Q40 are design questions raised by the notes
+research, and three of them correct assumptions an agent made rather than decisions he stated. See
+`design-reference.md` for the evidence behind each.
+
 ### Q30 - the posting account
 
 Under D053 marketing volume goes to a dedicated alternate account. Two things are undecided: the
@@ -116,6 +120,58 @@ Buyers get Discord access immediately on deposit (D017), so it has to exist befo
 **Recommendation:** a. An empty structured server signals a dead community; two channels with the
 builder actually in them signals a small one, which is the truth and is attractive at this stage.
 Creating it is the owner's action, since it is an external resource.
+
+### Q37 - dark first, or follow the reader's setting
+
+The page currently resolves both themes through `light-dark()`, which follows the operating system.
+That is exactly what Pierre's own site does. His notes, however, specify a dark grey background and
+monochrome as the default, with colour as a toggle.
+
+- a) Follow the reader's system setting, as now.
+- b) Dark only.
+- c) Dark by default, with a manual toggle.
+
+**Recommendation:** b for the marketing page. His one self-written specification says dark grey, the
+brand reads darker, and a single theme is one fewer thing to keep correct. Keep the system-following
+behaviour for the dashboard, where he will use it in daylight.
+
+### Q38 - the border radius rule
+
+Zero radius everywhere is currently asserted in the code as a brutalist default. He has never stated
+a radius rule anywhere in the notes. That was an agent assumption and should be his call.
+
+- a) Zero everywhere, hard rule.
+- b) A single small radius, applied consistently.
+- c) Zero on the marketing page, small radius in the dashboard where controls need affordance.
+
+**Recommendation:** c. Sharp corners suit the brutalist marketing surface; interactive controls read
+as more tappable with a small radius, which matters more on a phone.
+
+### Q39 - the accent
+
+There is no locked accent. His semantic map assigns orange or yellow to "human", blue or black to
+"controlled", purple to "knowledge", red to "agents". The page currently uses a warm amber for
+selection and focus only.
+
+- a) Keep the warm amber, justified as the "human" colour, which matches the ethos.
+- b) Pick from the semantic map deliberately, and use each colour for its meaning.
+- c) No accent at all, pure monochrome.
+
+**Recommendation:** a. It is already consistent with the map, and one accent used sparingly is the
+most brutalist option that still gives focus states somewhere to live. Option b becomes interesting
+later, on a page that explains the platform's layers.
+
+### Q40 - the hero treatment
+
+ASCII, dithering, CRT and pixel-distortion effects, and black-and-white height maps are among his
+most repeated visual requests across the notes. The hero is currently plain text.
+
+- a) Keep it plain text.
+- b) Add a restrained ASCII or dither element to the hero.
+- c) Go further: an animated monochrome treatment as the page's signature.
+
+**Recommendation:** b, but only after the copy is approved. Getting the words right is worth more
+than the visual, and an effect built around copy that then changes is wasted work.
 
 ---
 
