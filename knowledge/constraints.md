@@ -29,6 +29,34 @@ without the owner approving it explicitly in the Cursor chat, with the date reco
 Resolved 2026-08-14. The owner has taken down the previous project's deployments and provisioned new
 infrastructure, so its schedules are no longer firing.
 
+## Deployment identifiers
+
+Locked so no agent has to guess when calling the Vercel API.
+
+| Field | Value |
+| --- | --- |
+| Project | `prj_bxIGAfZxeJt0ep5hwQyykPYMpbnV` (`generated`) |
+| Team | `team_kaSUAXJCVtO2tEDVwnTFNDVN` (`alteredcomputer`) |
+| Root directory | `apps/web` |
+| Domain | `generated.altered.computer` |
+| Webhook | `https://generated.altered.computer/api/webhooks/sendblue` |
+
+**Pulling environment values** is approved and is a read. The Vercel REST API returns ciphertext for
+encrypted variables even with `decrypt=true`, so use the CLI, which decrypts correctly:
+
+```bash
+cd apps/web
+mkdir -p .vercel && printf '{"projectId":"prj_bxIGAfZxeJt0ep5hwQyykPYMpbnV","orgId":"team_kaSUAXJCVtO2tEDVwnTFNDVN"}' > .vercel/project.json
+pnpm dlx vercel@latest env pull .env.local --environment=development --token="$READ_ONLY__VERCEL_TOKEN" --yes
+```
+
+The file must live in `apps/web`, not the repo root, because Next only loads env files from the
+application directory. It is ignored by the root `.gitignore`. After pulling, verify no value looks
+like a base64 envelope beginning `eyJ`, which would mean ciphertext was written instead of a value.
+
+`APP_ENV` already has a `development` value in Vercel, so the pulled file is correctly marked as
+development with no manual edit.
+
 ## Reference clones
 
 Located 2026-08-14 with the broader GitHub token. Both are private and read-only.
