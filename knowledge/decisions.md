@@ -479,3 +479,124 @@ so no separate API base URL is needed.
 `APP_ENV` to `development` by hand, because a pulled production file will otherwise claim to be
 production. Recorded in `.env.example`.
 
+
+---
+
+## Round 3 - narrative, surfaces, and measurement (2026-08-15)
+
+### D052 - Q23: two narratives, not one
+
+**Verdict:** "The future is generated" is a description of 2026, not our story, so it is not the
+narrative. There are two narratives and they sit at different levels.
+
+**Brand ethos:** we preserve human truth through versioning, attribution, and aggregation, and only
+then distribute and produce on top of it with AI. Machines sit above human input, never underneath
+it. The consequence is authenticity and connection between people, and confidence grounded in work
+that is genuinely yours.
+
+**Product narrative (Koa, memory, organisation):** never lose your best thinking again.
+
+**Why this matters for copy:** the ethos explains why the core is hand-written and why everything
+around it can be generated and disclosed. It is the moral argument. The product narrative is the
+benefit argument. They do not compete, and neither one replaces the other.
+
+**Offer unchanged.** The intentional-generation angle stays out of the promise, per D040 and D049.
+
+### D053 - Q24: a dedicated posting account, not the main ones
+
+**Verdict:** Marketing volume goes to a dedicated alternate account rather than to the owner's
+personal account or the official ALTERED account. Both of those stay high-signal and infrequent, by
+preference.
+
+**Why:** the main accounts are intentionally dense and reserved. Frequent promotional posting there
+costs him something real even if it converts. A separate account also allows looser
+human-in-the-loop later, and makes advertising practical.
+
+**Standing rules:** one hundred percent human approval of every post for now. Any future video that
+is not actually him carries an AI disclosure.
+
+**Open:** the handle itself, and whether it reads as personal-extended or brand-extended. See Q30.
+
+### D054 - Q25: notify by iMessage, approve on the dashboard
+
+**Verdict:** Anything involving editing, approval, or more than about two sentences of source text
+goes to the dashboard. iMessage receives a one-sentence natural-language notification, batched where
+that makes sense, with a link.
+
+**Why:** iMessage is for high-level direction. Filling it with fine-grained editing work is what
+turns an assistant into a chore. The dashboard is usable on the phone too, so nothing is lost.
+
+### D055 - Q26: the landing page takes the apex, for now
+
+**Verdict:** The landing page belongs on `altered.computer`. The apex can be handed to the
+hand-written product later, once there is something substantial to put there.
+
+**Current state:** `generated.altered.computer` is live and holds the deployment today. Moving to the
+apex is a domain change, not a code change.
+
+### D056 - Q27: full dashboard in the first version
+
+**Verdict:** Lead flow and metrics, drafts and scheduled posts, the feature graph, and the kill
+switches. All four.
+
+### D057 - Q28: the operator agent reports, it does not delegate
+
+**Verdict:** The iMessage agent handles notifications, directional alignment, and answering
+questions about visible system state. It does **not** delegate coding tasks to agents.
+
+**Why (from experience):** delegating produced abandoned chat histories, redundant objectives, and
+layered fixes that turned into hacks. The owner administers coding work himself in Cursor, where he
+can watch it. Keeping the iMessage concurrency problems away from the development process is worth
+more than the convenience.
+
+**The split-brain design that replaces delegation:**
+
+- The iMessage agent reads the feature graph and system state, either through a secured endpoint
+  that serves the graph from the repo files or through the database, whichever proves simpler.
+- The coding agent reads the operational side directly: querying the database with the connection
+  string, or calling internal endpoints with an internal token.
+
+Each side reads what it needs. Neither drives the other.
+
+### D058 - Q29: our own events first
+
+**Verdict:** Funnel and financial truth lives in our database, constructed so internal traffic
+cannot contaminate it. A hosted product analytics tool may be added later for web behaviour.
+
+### D059 - Typography and visual reference
+
+**Verdict:** Berkeley Mono, variable, as the single typeface for all site copy. The reference is
+Pierre's markdown-style monospaced site: extreme spareness, capitalised section labels, a strict
+baseline grid, and no decoration that is not structural.
+
+**Held in reserve:** PX Grotesk and PX Grotesk Mono, once the owner buys a licence. Trial cuts are
+missing non-alphanumeric characters, so they cannot ship. Hoefler Text is a possible serif for
+literature-style passages, to be used with intent, since it may not sit well beside the brutalist
+faces.
+
+### D060 - Distillation is not clarity
+
+**Verdict:** Two distinct things, and copy must not conflate them.
+
+**Distillation** is the process that converts long source text into singular, backlinked thoughts.
+It is mechanical and can be automatic.
+
+**Clarity** is a human-decided outcome. AI can assist heavily by aggregating, compressing, naming
+the dominant theme, and asking the few questions that matter, which is properly called
+agent-assisted clarity. Deciding what is true remains the human's.
+
+### D061 - The certificate error is network interception, not our infrastructure
+
+**Diagnosis:** The certificate presented on the hospital network was issued by
+`northgate.healthy.bewell.ca`, which is that network's own inspection proxy. It terminates TLS and
+re-signs with a private authority that a personal device does not trust.
+
+**Verified from here:** our chain is a valid Let's Encrypt certificate that verifies cleanly against
+a public trust store, with no missing intermediate. Nothing is wrong on Vercel's side or ours.
+
+**Why other sites work:** selective interception. Established domains are categorised and bypassed;
+a new subdomain on a new top-level domain has no reputation, so it gets inspected.
+
+**Options, none urgent:** submit the domain for categorisation with the major URL-filtering vendors,
+which requires the owner's approval since it is an outbound write; or move to the apex under D055,
+which will accumulate reputation faster. Affects only networks that inspect TLS.
